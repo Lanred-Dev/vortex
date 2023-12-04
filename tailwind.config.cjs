@@ -45,7 +45,7 @@ module.exports = {
                 normal: "10px",
             },
             fontFamily: {
-                poppins: ["Poppins", ...defaultTheme.fontFamily.sans],
+                leonSans: ["Leon Sans", ...defaultTheme.fontFamily.sans],
             },
         },
     },

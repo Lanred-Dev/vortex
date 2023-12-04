@@ -1,5 +1,5 @@
 <script lang="ts">
-    import '@splidejs/svelte-splide/css/core';
+    import "@splidejs/svelte-splide/css/core";
     import "$lib/components/tailwind.css";
     import { onMount } from "svelte";
 
@@ -64,9 +64,13 @@
 </script>
 
 <svelte:head>
-    <title>Quado</title>
+    <title>Vortex</title>
 </svelte:head>
 
-<main class="h-screen w-screen select-text overflow-hidden text-center font-salmaPro text-primary">
-    <slot />
+<main class="h-screen w-screen select-text overflow-hidden text-center">
+    <div class="polkaBackground w-screen h-screen flex justify-center items-center absolute top-0 left-0 z-[1]" />
+
+    <div class="h-screen w-screen absolute top-0 left-0 z-[2] overflow-x-hidden">
+        <slot />
+    </div>
 </main>
