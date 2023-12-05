@@ -1,11 +1,17 @@
 <script lang="ts">
     import "@splidejs/svelte-splide/css/core";
     import "$lib/components/tailwind.css";
+    import PolkaDots from "$lib/components/polkaDots.svelte";
+    import anime from "animejs";
     import { onMount } from "svelte";
+    import { backgroundColor } from "$lib/background";
+    import { get } from "svelte/store";
 
     let heightScreenElements: HTMLElement[];
     let classRegex: RegExp = /(lg|sm|md)\:h\-/gm;
     let selectorRegex: RegExp = /(lg|sm|md)/gm;
+    let backgroundColorContainer: HTMLDivElement;
+    let backgroundColorTransitionContainer: HTMLDivElement;
 
     //prevent elements with sm, md, or lg selectors from being overwritten depending on screen size
     function checkIfSelectorMatch(element: HTMLElement): boolean {
@@ -60,6 +66,22 @@
     onMount(() => {
         updateHeightElements();
         window.addEventListener("resize", updateHeightElements);
+
+        backgroundColor.subscribe((newColor: string) => {
+            backgroundColorTransitionContainer.style.display = "block";
+            backgroundColorTransitionContainer.style.backgroundColor = newColor;
+
+            anime({
+                targets: backgroundColorTransitionContainer,
+                top: ["-100%", "0%"],
+                duration: 800,
+                easing: "easeOutQuad",
+                complete: () => {
+                    backgroundColorContainer.style.backgroundColor = newColor;
+                    backgroundColorTransitionContainer.style.display = "none";
+                },
+            });
+        });
     });
 </script>
 
@@ -68,9 +90,13 @@
 </svelte:head>
 
 <main class="h-screen w-screen select-text overflow-hidden text-center">
-    <div class="polkaBackground w-screen h-screen flex justify-center items-center absolute top-0 left-0 z-[1]" />
+    <div>
+        <div class="absolute w-screen h-screen z-[1]" style="background-color: {get(backgroundColor)};" bind:this={backgroundColorContainer} />
+        <div class="hidden absolute w-screen h-screen z-[2]" bind:this={backgroundColorTransitionContainer} />
+        <PolkaDots classes="absolute w-screen h-screen z-[3] bg-transparent" />
+    </div>
 
-    <div class="h-screen w-screen absolute top-0 left-0 z-[2] overflow-x-hidden">
+    <div class="h-screen w-screen absolute top-0 left-0 z-[4] overflow-x-hidden">
         <slot />
     </div>
 </main>

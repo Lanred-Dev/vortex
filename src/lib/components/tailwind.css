@@ -83,10 +83,4 @@
     input {
         outline: none;
     }
-
-    .polkaBackground {
-        background-image: radial-gradient(circle at center center, #141414 9%, #050505 9%);
-        background-size: 15px 15px;
-        background-position: center;
-    }
 }
