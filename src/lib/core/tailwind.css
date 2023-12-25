@@ -1,0 +1,208 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@font-face {
+    font-family: "Leon Sans";
+    src:
+        local("Leon Sans Regular"),
+        local("LeonSans-Regular"),
+        url("fonts/LeonSans-Regular.ttf") format("truetype");
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Leon Sans";
+    src:
+        local("Leon Sans Light"),
+        local("LeonSans-Light"),
+        url("fonts/LeonSans-Light.ttf") format("truetype");
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Leon Sans";
+    src:
+        local("Leon Sans Bold"),
+        local("LeonSans-Bold"),
+        url("fonts/LeonSans-Bold.ttf") format("truetype");
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Leon Sans";
+    src:
+        local("Leon Sans Medium"),
+        local("LeonSans-Medium"),
+        url("fonts/LeonSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: "Leon Sans";
+    src:
+        local("Leon Sans Thin"),
+        local("LeonSans-Thin"),
+        url("fonts/LeonSans-Thin.ttf") format("truetype");
+    font-weight: 100;
+    font-style: normal;
+    font-display: swap;
+}
+
+@layer base {
+    * {
+        scrollbar-width: auto;
+        scrollbar-color: transparent #ffffff;
+    }
+
+    *::-webkit-scrollbar {
+        @apply w-[5px] h-[5px];
+    }
+
+    *::-webkit-scrollbar-track {
+        @apply hidden;
+    }
+
+    *::-webkit-scrollbar-thumb {
+        @apply bg-white bg-opacity-40 rounded-full;
+    }
+
+    * {
+        @apply font-leonSans text-primary;
+    }
+
+    body {
+        @apply w-full h-screen text-center;
+    }
+
+    h1,
+    h2,
+    h3 {
+        @apply font-bold;
+    }
+
+    p,
+    input {
+        @apply font-normal;
+    }
+
+    a,
+    button {
+        @apply font-semibold select-none;
+    }
+
+    input {
+        @apply outline-none;
+    }
+
+    h1,
+    h2,
+    h3,
+    p,
+    button,
+    input,
+    textarea {
+        @apply tracking-widest;
+    }
+}
+
+@layer components {
+    .onlyGlass {
+        @apply bg-background bg-clip-padding backdrop-filter backdrop-blur-lg bg-opacity-40 border-background-800;
+    }
+
+    .onlyGlassSecondary {
+        @apply onlyGlass bg-backgroundSecondary-950 bg-opacity-70;
+    }
+
+    .glass {
+        @apply onlyGlass rounded-normal border;
+    }
+
+    .glassSecondary {
+        @apply onlyGlassSecondary rounded-normal border;
+    }
+
+    button.glass,
+    input.glass,
+    a.glass,
+    .form button,
+    .form a,
+    .buttonGrid button {
+        @apply px-5 py-2.5;
+    }
+
+    button.glass,
+    a.glass,
+    .form button,
+    .form a,
+    .buttonGrid button {
+        @apply transition-all duration-300;
+    }
+
+    button.glass:hover,
+    a.glass:hover,
+    .form button:hover,
+    .form a:hover,
+    .buttonGrid button:hover {
+        @apply -translate-y-1;
+    }
+
+    input.glass {
+        @apply rounded-full;
+    }
+
+    .form,
+    .buttonGrid {
+        @apply flex flex-col justify-center items-center gap-2;
+    }
+
+    .form .input {
+        @apply flex flex-col justify-center items-center w-full gap-1;
+    }
+
+    .form .input div {
+        @apply w-full flex justify-between items-center px-2;
+    }
+
+    .form .input div .title {
+        @apply text-lg font-semibold uppercase text-primary-600;
+    }
+
+    .form .input div .status {
+        @apply text-base;
+    }
+
+    .form .input div .status.failure {
+        @apply text-red-500;
+    }
+
+    .form .input div .status.success {
+        @apply text-blue-500;
+    }
+
+    .form .input input {
+        @apply glass px-4 py-2 w-full text-lg;
+    }
+
+    .form button,
+    .form a {
+        @apply glass w-full mt-3 bg-blue-800;
+    }
+
+    .buttonGrid {
+        @apply flex-row flex-wrap;
+    }
+
+    .buttonGrid button {
+        @apply glass aspect-[1/1.05];
+    }
+}
