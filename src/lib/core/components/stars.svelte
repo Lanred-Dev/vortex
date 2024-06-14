@@ -6,15 +6,15 @@
     export let starCount: number = 275;
     export let parallax: number = 5;
     let canvas: HTMLCanvasElement;
-    let currentElement: any;
+    let stars: any;
 
     function resize() {
-        currentElement.setCanvasSize(window.innerWidth, window.innerHeight);
-        currentElement.resetSparticles();
+        stars.setCanvasSize(window.innerWidth, window.innerHeight);
+        stars.resetSparticles();
     }
 
     onMount(() => {
-        currentElement = new sparticles(canvas, {
+        stars = new sparticles(canvas, {
             composition: "source-over",
             count: starCount,
             speed: 0.15,
@@ -44,7 +44,7 @@
 
         return () => {
             window.removeEventListener("resize", resize);
-            currentElement.destroy();
+            stars.destroy();
         };
     });
 </script>

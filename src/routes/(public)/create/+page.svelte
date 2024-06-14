@@ -1,8 +1,8 @@
 <script lang="ts">
     import Header from "$lib/core/components/header.svelte";
-    import ModeSelection from "$lib/create/modeSelection.svelte";
-    import SettingsSelection from "$lib/create/settingsSelection.svelte";
-    import Loader from "$lib/create/loader.svelte";
+    import ModeSelection from "$lib/pages/create/modeSelection.svelte";
+    import SettingsSelection from "$lib/pages/create/settingsSelection.svelte";
+    import Loader from "$lib/pages/create/loader.svelte";
     import { goto } from "$app/navigation";
     import socket from "$lib/core/socket";
     import { saveState } from "$lib/stores/lobby";
