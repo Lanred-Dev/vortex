@@ -1,0 +1,35 @@
+{
+  "name": "vortex-backend",
+  "version": "0.0.0",
+  "description": "The backend server for vortex.",
+  "homepage": "https://github.com/Lanred-Dev/vortex#readme",
+  "bugs": {
+    "url": "https://github.com/Lanred-Dev/vortex/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Lanred-Dev/vortex.git"
+  },
+  "license": "MIT",
+  "author": "Landon Redmond",
+  "type": "module",
+  "main": "build/index.js",
+  "scripts": {
+    "start": "node --env-file=.env build/index.js",
+    "dev": "tsx watch --env-file=.env src/index.ts",
+    "build": "tsc"
+  },
+  "devDependencies": {
+    "@types/cors": "^2.8.19",
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.3.3",
+    "tsc": "^2.0.4",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  },
+  "dependencies": {
+    "cors": "^2.8.6",
+    "express": "^5.2.1",
+    "socket.io": "^4.8.3"
+  }
+}
