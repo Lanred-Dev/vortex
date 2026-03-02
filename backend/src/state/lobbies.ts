@@ -1,4 +1,4 @@
-import { Lobby } from "../models/Lobby.js";
+import type { Lobby } from "../models/Lobby.js";
 import generateDocumentID from "../utils/generateID.js";
 
 const LOBBY_ID_LENGTH: number = parseInt(process.env.LOBBY_ID_LENGTH!);
